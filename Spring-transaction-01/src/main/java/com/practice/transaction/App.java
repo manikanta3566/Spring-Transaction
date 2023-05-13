@@ -1,5 +1,10 @@
 package com.practice.transaction;
 
+import com.practice.transaction.config.ProjectConfig;
+import com.practice.transaction.service.ProductService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 /**
  * Hello world!
  *
@@ -8,6 +13,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        ApplicationContext context=new AnnotationConfigApplicationContext(ProjectConfig.class);
+        ProductService productService = context.getBean("productService", ProductService.class);
+        productService.saveProductInfo();
     }
 }
